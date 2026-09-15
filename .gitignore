@@ -1,0 +1,9 @@
+.vercel
+node_modules
+.env
+.env.local
+.DS_Store
+.env*
+
+# Dossier source des logos (photos perso incluses) — ne pas publier
+assets copie/

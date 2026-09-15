@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réserve ton appel — Le Cloud AI</title>
+  <meta name="description" content="Choisis ton créneau d'appel découverte gratuit de 30 minutes avec Le Cloud AI." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://calendly.com" />
+  <link rel="preconnect" href="https://assets.calendly.com" />
+  <link rel="preconnect" href="https://www.youtube.com" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
+
+  <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/bodoni-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+
+  <style>
+    /* ===== FAQ (accordéon vidéo) ===== */
+    .rv-faq { padding: 20px 0 90px; }
+    .rv-faq__head { text-align: center; max-width: 640px; margin: 0 auto 34px; }
+    .rv-faq__title {
+      font-size: clamp(26px, 4vw, 38px); font-weight: 900;
+      letter-spacing: -0.02em; color: #fff; margin: 6px 0 10px; line-height: 1.12;
+    }
+    .rv-faq__sub { font-size: 15px; color: var(--text-dim); line-height: 1.5; }
+    .rv-faq__list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .rv-faq__item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(34, 204, 255,0.24);
+      border-radius: 14px; overflow: hidden;
+    }
+    .rv-faq__item[open] { border-color: rgba(34, 204, 255,0.5); }
+    .rv-faq__q {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 22px;
+      font-size: clamp(16px, 2.2vw, 19px); font-weight: 700; color: #fff;
+      transition: background 0.2s;
+    }
+    .rv-faq__q::-webkit-details-marker { display: none; }
+    .rv-faq__q:hover { background: rgba(255,255,255,0.03); }
+    .rv-faq__num {
+      flex: 0 0 auto; font-size: 12px; font-weight: 800; letter-spacing: 0.04em;
+      color: var(--brand); background: rgba(34, 204, 255,0.14);
+      border-radius: 8px; padding: 5px 9px; min-width: 34px; text-align: center;
+    }
+    .rv-faq__qtext { flex: 1; }
+    .rv-faq__chev {
+      flex: 0 0 auto; color: var(--brand); font-size: 20px; line-height: 1;
+      transition: transform 0.25s; transform: rotate(0deg);
+    }
+    .rv-faq__item[open] .rv-faq__chev { transform: rotate(180deg); }
+    .rv-faq__body { padding: 0 22px 22px; }
+    .rv-faq__video {
+      width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden;
+      background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+    }
+    .rv-faq__video iframe { width: 100%; height: 100%; border: none; display: block; }
+  </style>
+
+  <!-- ===== Meta Pixel ===== -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '889823396710916');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=889823396710916&ev=PageView&noscript=1" alt="" /></noscript>
+  <!-- ===== /Meta Pixel ===== -->
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="lp-rvheader">
+    <div class="lp-container lp-rvheader__inner">
+      <a href="/" class="lp-footer__brand">
+        <img src="/assets/images/lecloud-logo.png" alt="Le Cloud AI" style="height:26px;width:auto;" />
+      </a>
+      <span class="lp-rvheader__step">Dernière étape</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="lp-rvhero">
+    <div class="lp-rvhero__glow" aria-hidden="true"></div>
+    <div class="lp-container">
+      <span class="lp-eyebrow">✓ Tes infos sont enregistrées</span>
+      <h1 class="lp-rvhero__title">Réserve ton appel stratégique</h1>
+      <p class="lp-rvhero__sub">
+        Choisis ton créneau ci-dessous. Tu as des questions&nbsp;? Les réponses sont juste en bas.
+      </p>
+    </div>
+  </section>
+
+  <!-- CALENDRIER -->
+  <section class="lp-booking" id="booking">
+    <div class="lp-container">
+      <div class="lp-booking__wrap lp-booking__wrap--open">
+        <div class="lp-booking__calendar is-unlocked">
+          <!-- Widget Calendly (inline) — prérempli avec les infos du lead -->
+          <div
+            id="calendlyInline"
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/sunafilmsmedia/nouvelle-reunion?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=22ccff"
+            style="min-width:320px;height:720px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (accordéon vidéo) -->
+  <section class="rv-faq" id="faq">
+    <div class="lp-container">
+      <div class="rv-faq__head">
+        <span class="lp-eyebrow">Avant l'appel</span>
+        <h2 class="rv-faq__title">Les questions qu'on nous pose à chaque appel</h2>
+        <p class="rv-faq__sub">Clique sur une question pour voir la réponse en vidéo.</p>
+      </div>
+
+      <div class="rv-faq__list">
+        <details class="rv-faq__item">
+          <summary class="rv-faq__q">
+            <span class="rv-faq__num">01</span>
+            <span class="rv-faq__qtext">Pourquoi nous&nbsp;?</span>
+            <span class="rv-faq__chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="rv-faq__body">
+            <div class="rv-faq__video" data-video="Ibtb_6sLFys"></div>
+          </div>
+        </details>
+
+        <details class="rv-faq__item">
+          <summary class="rv-faq__q">
+            <span class="rv-faq__num">02</span>
+            <span class="rv-faq__qtext">Combien ça coûte&nbsp;?</span>
+            <span class="rv-faq__chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="rv-faq__body">
+            <div class="rv-faq__video" data-video="RmrQ3wK4wFE"></div>
+          </div>
+        </details>
+
+        <details class="rv-faq__item">
+          <summary class="rv-faq__q">
+            <span class="rv-faq__num">03</span>
+            <span class="rv-faq__qtext">Quelle est la garantie&nbsp;?</span>
+            <span class="rv-faq__chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="rv-faq__body">
+            <div class="rv-faq__video" data-video="n9MLgRDjHx0"></div>
+          </div>
+        </details>
+
+        <details class="rv-faq__item">
+          <summary class="rv-faq__q">
+            <span class="rv-faq__num">04</span>
+            <span class="rv-faq__qtext">Est-ce qu'y a un engagement&nbsp;?</span>
+            <span class="rv-faq__chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="rv-faq__body">
+            <div class="rv-faq__video" data-video="citzsHAB2LY"></div>
+          </div>
+        </details>
+
+        <details class="rv-faq__item">
+          <summary class="rv-faq__q">
+            <span class="rv-faq__num">05</span>
+            <span class="rv-faq__qtext">Qu'est-ce qu'on va voir lors de l'appel découverte&nbsp;?</span>
+            <span class="rv-faq__chev" aria-hidden="true">⌄</span>
+          </summary>
+          <div class="rv-faq__body">
+            <div class="rv-faq__video" data-video="Aot3s447dFA"></div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="lp-footer">
+    <div class="lp-container lp-footer__inner">
+      <a href="/" class="lp-footer__brand">
+        <img src="/assets/images/lecloud-logo.png" alt="Le Cloud AI" style="height:24px;width:auto;" />
+      </a>
+      <div class="lp-footer__meta">
+        <a href="mailto:sunafilmsmedia@gmail.com">sunafilmsmedia@gmail.com</a>
+        · <span>© 2026 Le Cloud AI</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script d'embed Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Pré-remplit le widget Calendly avec les infos de la page principale -->
+  <script>
+    (function () {
+      try {
+        var p = new URLSearchParams(location.search);
+        var holder = document.getElementById('calendlyInline');
+        if (!holder) return;
+        var url = new URL(holder.getAttribute('data-url'));
+        var name = (p.get('name') || '').trim();
+        if (name) url.searchParams.set('name', name);
+        if (p.get('email')) url.searchParams.set('email', p.get('email'));
+        // Calendly : le téléphone se pré-remplit via une question personnalisée (a1)
+        if (p.get('phone')) url.searchParams.set('a1', p.get('phone'));
+        holder.setAttribute('data-url', url.toString());
+      } catch (e) { /* best-effort */ }
+    })();
+  </script>
+
+  <!-- RDV confirmé → pixel Schedule -->
+  <script>
+    (function () {
+      var fired = false;
+      window.addEventListener('message', function (e) {
+        if (fired) return;
+        var origin = e.origin || '';
+        if (!/calendly\.com/i.test(origin)) return;
+        var data = e.data || {};
+        if (data && data.event === 'calendly.event_scheduled') {
+          fired = true;
+          if (typeof fbq !== 'undefined') fbq('track', 'Schedule');
+        }
+      });
+    })();
+  </script>
+
+  <!-- FAQ : charge la vidéo YouTube seulement à l'ouverture (léger) -->
+  <script>
+    (function () {
+      document.querySelectorAll('.rv-faq__item').forEach(function (item) {
+        item.addEventListener('toggle', function () {
+          if (!item.open) return;
+          var holder = item.querySelector('.rv-faq__video');
+          if (!holder || holder.dataset.loaded) return;
+          var id = holder.getAttribute('data-video');
+          var f = document.createElement('iframe');
+          f.src = 'https://www.youtube.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1';
+          f.title = 'Réponse en vidéo';
+          f.loading = 'lazy';
+          f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          f.allowFullscreen = true;
+          holder.appendChild(f);
+          holder.dataset.loaded = '1';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
