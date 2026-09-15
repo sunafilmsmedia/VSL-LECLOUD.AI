@@ -6,15 +6,14 @@
   <title>Réserve ton appel — Le Cloud AI</title>
   <meta name="description" content="Choisis ton créneau d'appel découverte gratuit de 30 minutes avec Le Cloud AI." />
   <meta name="robots" content="noindex" />
-  <link rel="preconnect" href="https://calendly.com" />
-  <link rel="preconnect" href="https://assets.calendly.com" />
+  <link rel="preconnect" href="https://api.leadconnectorhq.com" />
+  <link rel="preconnect" href="https://link.msgsndr.com" />
   <link rel="preconnect" href="https://www.youtube.com" />
   <link rel="preconnect" href="https://i.ytimg.com" />
 
   <link rel="preload" href="/assets/fonts/manrope-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/bodoni-italic.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 
   <style>
     /* ===== FAQ (accordéon vidéo) ===== */
@@ -106,12 +105,14 @@
     <div class="lp-container">
       <div class="lp-booking__wrap lp-booking__wrap--open">
         <div class="lp-booking__calendar is-unlocked">
-          <!-- Widget Calendly (inline) — prérempli avec les infos du lead -->
-          <div
-            id="calendlyInline"
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/sunafilmsmedia/nouvelle-reunion?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=22ccff"
-            style="min-width:320px;height:720px;"></div>
+          <!-- Widget GoHighLevel — prérempli avec les infos du lead -->
+          <iframe
+            id="ghlBooking"
+            src="https://api.leadconnectorhq.com/widget/booking/a5vPwtzpOREfqC5zuqqu"
+            title="Calendrier de réservation"
+            style="width:100%;border:none;overflow:hidden;"
+            scrolling="no"
+            width="100%" height="720"></iframe>
         </div>
       </div>
     </div>
@@ -198,23 +199,28 @@
     </div>
   </footer>
 
-  <!-- Script d'embed Calendly -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Script d'embed GoHighLevel (resize auto) -->
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
-  <!-- Pré-remplit le widget Calendly avec les infos de la page principale -->
+  <!-- Pré-remplit le widget GHL avec les infos de la page principale -->
   <script>
     (function () {
       try {
         var p = new URLSearchParams(location.search);
-        var holder = document.getElementById('calendlyInline');
-        if (!holder) return;
-        var url = new URL(holder.getAttribute('data-url'));
+        var iframe = document.getElementById('ghlBooking');
+        if (!iframe) return;
         var name = (p.get('name') || '').trim();
-        if (name) url.searchParams.set('name', name);
-        if (p.get('email')) url.searchParams.set('email', p.get('email'));
-        // Calendly : le téléphone se pré-remplit via une question personnalisée (a1)
-        if (p.get('phone')) url.searchParams.set('a1', p.get('phone'));
-        holder.setAttribute('data-url', url.toString());
+        var parts = name.split(/\s+/);
+        var first = parts.shift() || '';
+        var last = parts.join(' ');
+        var qs = [];
+        if (first) qs.push('first_name=' + encodeURIComponent(first));
+        if (last)  qs.push('last_name=' + encodeURIComponent(last));
+        if (p.get('email')) qs.push('email=' + encodeURIComponent(p.get('email')));
+        if (p.get('phone')) qs.push('phone=' + encodeURIComponent(p.get('phone')));
+        if (qs.length) {
+          iframe.src = 'https://api.leadconnectorhq.com/widget/booking/a5vPwtzpOREfqC5zuqqu?' + qs.join('&');
+        }
       } catch (e) { /* best-effort */ }
     })();
   </script>
@@ -226,9 +232,11 @@
       window.addEventListener('message', function (e) {
         if (fired) return;
         var origin = e.origin || '';
-        if (!/calendly\.com/i.test(origin)) return;
-        var data = e.data || {};
-        if (data && data.event === 'calendly.event_scheduled') {
+        if (!/leadconnectorhq\.com|msgsndr\.com|gohighlevel\.com/i.test(origin)) return;
+        var raw = '';
+        try { raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data || ''); } catch (x) {}
+        if (/height|resize|setheight/i.test(raw) && !/appoint|book|schedul|confirm/i.test(raw)) return;
+        if (/appointment.?booked|booking.?(success|complete|confirmed)|schedul|slotbooked/i.test(raw)) {
           fired = true;
           if (typeof fbq !== 'undefined') fbq('track', 'Schedule');
         }

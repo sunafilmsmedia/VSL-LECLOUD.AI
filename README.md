@@ -1,6 +1,6 @@
 # VSL /vsl — Le Cloud AI
 
-Landing page VSL mono-objectif (réserver un appel Calendly) pour l'offre Le Cloud AI :
+Landing page VSL mono-objectif (réserver un appel via GoHighLevel) pour l'offre Le Cloud AI :
 **une équipe d'employés IA installée dans ton entreprise en 7 jours**, branchée à tes
 outils, payée une seule fois. Ciblée par Meta Ads. HTML/CSS/JS vanilla + 1 serverless
 function Vercel.
@@ -15,7 +15,7 @@ function Vercel.
 vsl-lecloud/
 ├── index.html          ← landing complète (hero+vidéo, logos, calendrier, métriques,
 │                          impact, mid-CTA, avis Google, portfolio, CTA final, modal 5 étapes)
-├── rdv.html            ← page de réservation (widget Calendly + FAQ vidéo)
+├── rdv.html            ← page de réservation (widget GoHighLevel + FAQ vidéo)
 ├── style.css           ← utilisé par rdv.html (index.html a son CSS critique inline)
 ├── script.js           ← modal, mini-calendrier, compteurs, slider, lecteur vidéo
 ├── vercel.json         ← cleanUrls + headers sécurité + cache assets
@@ -30,7 +30,7 @@ vsl-lecloud/
 1. **index.html** — VSL + preuves. Tous les CTA ouvrent la **modal 5 étapes**
    (nom → téléphone → courriel → domaine → taille d'équipe).
 2. Submit → `POST /api/lead` (webhook + notif) → redirection vers **/rdv** avec les infos.
-3. **rdv.html** — widget **Calendly** pré-rempli (name / email / téléphone) + FAQ vidéo.
+3. **rdv.html** — widget GoHighLevel pré-rempli (name / email / téléphone) + FAQ vidéo.
 
 ## À personnaliser avant la prod
 
@@ -38,7 +38,7 @@ vsl-lecloud/
 |----------------------------|-----------------------------------------------------------|
 | Vidéo VSL (hero)           | `script.js` → `VIDEO_ID` (placeholder repris du VSL Suna)  |
 | Vidéos FAQ                 | `rdv.html` → attributs `data-video` (placeholders)         |
-| Lien Calendly              | `rdv.html` → `data-url` (`calendly.com/sunafilmsmedia/nouvelle-reunion`) |
+| Calendrier GHL             | rdv.html → src iframe + prefill (a5vPwtzpOREfqC5zuqqu) |
 | Meta Pixel ID              | `index.html` + `rdv.html` (`889823396710916` — à confirmer)|
 | `GHL_WEBHOOK_URL`          | Env var Vercel (jamais dans le code)                       |
 | Métriques / cartes impact  | Chiffres illustratifs — à remplacer par tes vrais résultats|
@@ -66,4 +66,4 @@ vercel --prod        # production
 - `ClickBookCTA` (custom) — clic sur un CTA (`data-cta`: hero / mid / final / calendar)
 - `VideoPlay` (custom) — lecture de la vidéo VSL
 - `Lead` — submit du formulaire réussi
-- `Schedule` — RDV confirmé dans Calendly
+- `Schedule` — RDV confirmé dans GoHighLevel
