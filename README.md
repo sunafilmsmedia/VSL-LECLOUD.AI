@@ -49,7 +49,7 @@ vsl-lecloud/
 |--------------------|----------------------------|-------------------------|
 | `GHL_WEBHOOK_URL`  | URL du webhook lead        | Requis                  |
 | `RESEND_API_KEY`   | `re_xxxxxxxx`              | Optionnel (email notif) |
-| `NOTIF_EMAIL`      | `sunafilmsmedia@gmail.com` | Optionnel               |
+| `NOTIF_EMAIL`      | `info@le-cloud-ai.com` | Optionnel               |
 
 ## Déploiement
 
