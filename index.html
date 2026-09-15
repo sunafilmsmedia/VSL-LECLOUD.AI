@@ -212,7 +212,9 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-top: 4px;
-  line-height: 0.95;
+  line-height: 1.14;
+  padding-bottom: 0.14em;
+  overflow: visible;
   background: linear-gradient(100deg,#0b4dc4 0%,#1f9dff 26%,#22ccff 42%,#aeeeff 50%,#22ccff 58%,#1f9dff 74%,#0b4dc4 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
@@ -1562,6 +1564,19 @@ a { color: inherit; text-decoration: none; }
   .lp-hero__vsl-text { font-size: 18px; }
 }
 
+/* ---------- En-tête (logo) ---------- */
+.lp-topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px 20px;
+  background: rgba(5,5,5,0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.lp-topbar__logo { height: 30px; width: auto; display: block; }
+@media (max-width: 640px) { .lp-topbar { padding: 11px 16px; } .lp-topbar__logo { height: 26px; } }
+
   </style>
 
   <!-- ===== Meta Pixel — chargé à la 1ère interaction (hors thread critique) ===== -->
@@ -1586,6 +1601,15 @@ a { color: inherit; text-decoration: none; }
   <!-- ===== /Tracking ===== -->
 </head>
 <body>
+
+  <!-- ============================================================= -->
+  <!-- EN-TÊTE — logo Le Cloud AI                                    -->
+  <!-- ============================================================= -->
+  <header class="lp-topbar">
+    <a href="/" aria-label="Le Cloud AI">
+      <img class="lp-topbar__logo" src="/assets/images/lecloud-logo.png" alt="Le Cloud AI" width="160" height="30" />
+    </a>
+  </header>
 
   <!-- ============================================================= -->
   <!-- SECTION 1 — HERO + VIDÉO                                      -->
@@ -1655,44 +1679,28 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="marquee">
       <div class="marquee__track">
-        <!-- Rangée 1 -->
+        <!-- Rangée 1 (les 5 logos, répétés pour remplir la largeur) -->
         <img width="563" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/multi-prets.webp" alt="Multi-Prêts" />
-        <img width="134" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/mr-remax.webp" alt="Martin Ross RE/MAX" />
-        <img width="165" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/sperano.webp" alt="Sperano RE/MAX" />
-        <img width="622" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/roux-bachand.webp" alt="Roux & Bachand" />
-        <img width="1371" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/vyncent-ledoux.webp" alt="Vyncent Ledoux" />
-        <img width="1304" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/emmanuel-bouchard.webp" alt="Emmanuel Bouchard" />
-        <img width="203" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/claudia-menard.webp" alt="Claudia Ménard" />
-        <img width="178" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/laroche.webp" alt="Avec Laroche" />
-        <img width="788" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/jimenez.webp" alt="Jimenez" />
-        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="Bardagi" />
-        <img width="218" height="96" loading="lazy" class="marquee__logo" src="/assets/images/clients/desantis.svg" alt="Desantis" />
-        <img width="306" height="43" loading="lazy" class="marquee__logo" src="/assets/images/clients/langevin.svg" alt="Langevin Immobilier" />
-        <img width="153" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/laura.webp" alt="Laura" />
-        <img width="144" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/binette-dionne.webp" alt="Binette & Dionne" />
-        <img width="110" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/beach-day.webp" alt="Beach Day" />
-        <img width="150" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/domaine.webp" alt="Domaine" />
-        <img width="127" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/don.webp" alt="Don" />
+        <img width="577" height="150" loading="lazy" class="marquee__logo" src="/assets/images/clients/zolf.webp" alt="Zolf" />
         <img width="602" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/centum.webp" alt="Centum" />
+        <img width="597" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/alliance.webp" alt="Alliance Hypothécaire" />
+        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="Bardagi" />
+        <img width="563" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/multi-prets.webp" alt="" aria-hidden="true" />
+        <img width="577" height="150" loading="lazy" class="marquee__logo" src="/assets/images/clients/zolf.webp" alt="" aria-hidden="true" />
+        <img width="602" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/centum.webp" alt="" aria-hidden="true" />
+        <img width="597" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/alliance.webp" alt="" aria-hidden="true" />
+        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="" aria-hidden="true" />
         <!-- Rangée 2 (copie identique pour la boucle infinie) -->
         <img width="563" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/multi-prets.webp" alt="" aria-hidden="true" />
-        <img width="134" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/mr-remax.webp" alt="" aria-hidden="true" />
-        <img width="165" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/sperano.webp" alt="" aria-hidden="true" />
-        <img width="622" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/roux-bachand.webp" alt="" aria-hidden="true" />
-        <img width="1371" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/vyncent-ledoux.webp" alt="" aria-hidden="true" />
-        <img width="1304" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/emmanuel-bouchard.webp" alt="" aria-hidden="true" />
-        <img width="203" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/claudia-menard.webp" alt="" aria-hidden="true" />
-        <img width="178" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/laroche.webp" alt="" aria-hidden="true" />
-        <img width="788" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/jimenez.webp" alt="" aria-hidden="true" />
-        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="" aria-hidden="true" />
-        <img width="218" height="96" loading="lazy" class="marquee__logo" src="/assets/images/clients/desantis.svg" alt="" aria-hidden="true" />
-        <img width="306" height="43" loading="lazy" class="marquee__logo" src="/assets/images/clients/langevin.svg" alt="" aria-hidden="true" />
-        <img width="153" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/laura.webp" alt="" aria-hidden="true" />
-        <img width="144" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/binette-dionne.webp" alt="" aria-hidden="true" />
-        <img width="110" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/beach-day.webp" alt="" aria-hidden="true" />
-        <img width="150" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/domaine.webp" alt="" aria-hidden="true" />
-        <img width="127" height="160" loading="lazy" class="marquee__logo" src="/assets/images/clients/don.webp" alt="" aria-hidden="true" />
+        <img width="577" height="150" loading="lazy" class="marquee__logo" src="/assets/images/clients/zolf.webp" alt="" aria-hidden="true" />
         <img width="602" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/centum.webp" alt="" aria-hidden="true" />
+        <img width="597" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/alliance.webp" alt="" aria-hidden="true" />
+        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="" aria-hidden="true" />
+        <img width="563" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/multi-prets.webp" alt="" aria-hidden="true" />
+        <img width="577" height="150" loading="lazy" class="marquee__logo" src="/assets/images/clients/zolf.webp" alt="" aria-hidden="true" />
+        <img width="602" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/centum.webp" alt="" aria-hidden="true" />
+        <img width="597" height="180" loading="lazy" class="marquee__logo" src="/assets/images/agencies/alliance.webp" alt="" aria-hidden="true" />
+        <img width="790" height="170" loading="lazy" class="marquee__logo" src="/assets/images/clients/bardagi.webp" alt="" aria-hidden="true" />
       </div>
     </div>
   </section>
@@ -1906,33 +1914,11 @@ a { color: inherit; text-decoration: none; }
       </div>
 
       <div class="lp-clients__grid">
-        <div class="lp-clients__cell"><img width="134" height="160" src="/assets/images/clients/mr-remax.webp" alt="Martin Ross RE/MAX" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="165" height="160" src="/assets/images/clients/sperano.webp" alt="Sperano" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="622" height="160" src="/assets/images/clients/roux-bachand.webp" alt="Roux & Bachand" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="1371" height="160" src="/assets/images/clients/vyncent-ledoux.webp" alt="Vyncent Ledoux" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="1304" height="160" src="/assets/images/clients/emmanuel-bouchard.webp" alt="Emmanuel Bouchard" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="203" height="160" src="/assets/images/clients/claudia-menard.webp" alt="Claudia Ménard" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="178" height="160" src="/assets/images/clients/laroche.webp" alt="Avec Laroche" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="788" height="160" src="/assets/images/clients/jimenez.webp" alt="Jimenez" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="790" height="170" src="/assets/images/clients/bardagi.webp" alt="Bardagi" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="218" height="96" src="/assets/images/clients/desantis.svg" alt="Desantis" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="306" height="43" src="/assets/images/clients/langevin.svg" alt="Langevin Immobilier" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="153" height="160" src="/assets/images/clients/laura.webp" alt="Laura" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="144" height="160" src="/assets/images/clients/binette-dionne.webp" alt="Binette & Dionne" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="110" height="160" src="/assets/images/clients/beach-day.webp" alt="Beach Day" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="150" height="160" src="/assets/images/clients/domaine.webp" alt="Domaine de la Lumière" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="127" height="160" src="/assets/images/clients/don.webp" alt="Le Don de l'Auto" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="720" height="240" src="/assets/images/brokers/jp-bolduc.webp" alt="Jean-Philippe Bolduc" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="517" height="240" src="/assets/images/brokers/martin-ross.webp" alt="Martin Ross" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="1679" height="240" src="/assets/images/brokers/yannick-charette.webp" alt="Yannick Charette" loading="lazy" /></div>
         <div class="lp-clients__cell"><img width="563" height="180" src="/assets/images/agencies/multi-prets.webp" alt="Multi-Prêts" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="597" height="180" src="/assets/images/agencies/alliance.webp" alt="Alliance Hypothécaire" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="602" height="180" src="/assets/images/agencies/centum.webp" alt="Centum" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="196" height="91" src="/assets/images/clients/arcand.svg" alt="Arcand" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="583" height="170" src="/assets/images/clients/elev8.webp" alt="ELEV8 Event" loading="lazy" /></div>
         <div class="lp-clients__cell"><img width="577" height="150" src="/assets/images/clients/zolf.webp" alt="Zolf" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="423" height="170" src="/assets/images/clients/priscilla.webp" alt="Priscilla Ménard" loading="lazy" /></div>
-        <div class="lp-clients__cell"><img width="582" height="170" src="/assets/images/clients/tatiana.webp" alt="Groupe immobilier Londono" loading="lazy" /></div>
+        <div class="lp-clients__cell"><img width="602" height="180" src="/assets/images/agencies/centum.webp" alt="Centum" loading="lazy" /></div>
+        <div class="lp-clients__cell"><img width="597" height="180" src="/assets/images/agencies/alliance.webp" alt="Alliance Hypothécaire" loading="lazy" /></div>
+        <div class="lp-clients__cell"><img width="790" height="170" src="/assets/images/clients/bardagi.webp" alt="Bardagi" loading="lazy" /></div>
       </div>
     </div>
   </section>
