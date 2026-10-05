@@ -361,48 +361,40 @@
 
   // ===== VSL : miniature (bouton orange) → lecture AVEC le son au clic (pas d'autoplay) =====
   (function initVideoFacade() {
-    var VIDEO_ID = 'yNBzXR0RrMQ';
+    var VIDEO_ID = 'o14gypwpmy'; // Wistia — VSL.SEPT.1
     var facade = document.getElementById('videoFacade');
     var box = facade && facade.closest('.lp-hero__video');
     if (!facade || !box) return;
-
-    function setRate() {
-      try {
-        new YT.Player('vslPlayer', {
-          events: {
-            onReady: function (e) {
-              try { e.target.setPlaybackRate(1.2); e.target.playVideo(); } catch (x) {}
-            }
-          }
-        });
-      } catch (e) {}
-    }
 
     facade.addEventListener('click', function () {
       // Le clic (geste utilisateur) autorise la lecture AVEC le son
       var iframe = document.createElement('iframe');
       iframe.id = 'vslPlayer';
       iframe.title = 'Vidéo Le Cloud AI';
+      iframe.className = 'wistia_embed';
+      iframe.name = 'wistia_embed';
       iframe.setAttribute('frameborder', '0');
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allow', 'autoplay; fullscreen');
       iframe.setAttribute('allowfullscreen', '');
       iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
-      iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID +
-        '?autoplay=1&mute=0&rel=0&modestbranding=1&playsinline=1&controls=1&enablejsapi=1';
+      iframe.src = 'https://fast.wistia.net/embed/iframe/' + VIDEO_ID +
+        '?autoPlay=true&playsinline=true&videoFoam=false';
       box.appendChild(iframe);
       facade.remove();
 
       if (typeof fbq !== 'undefined') fbq('trackCustom', 'VideoPlay');
       track('video_play', 'played', 'yes');
 
-      // Lecture ×1.2 via l'API
-      if (window.YT && window.YT.Player) {
-        setRate();
-      } else {
+      // Lecture ×1.2 via l'API Wistia
+      window._wq = window._wq || [];
+      window._wq.push({ id: VIDEO_ID, onReady: function (video) {
+        try { video.playbackRate(1.2); video.play(); } catch (x) {}
+      } });
+      if (!document.querySelector('script[src*="wistia.net/assets/external/E-v1.js"]')) {
         var tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
+        tag.src = 'https://fast.wistia.net/assets/external/E-v1.js';
+        tag.async = true;
         document.head.appendChild(tag);
-        window.onYouTubeIframeAPIReady = setRate;
       }
     });
   })();
